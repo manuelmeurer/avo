@@ -42,6 +42,10 @@ module Avo
       avo_directory = Rails.root.join("app", "avo").to_s
       engine_avo_directory = Avo::Engine.root.join("app", "avo").to_s
 
+      Rails.autoloaders.main.inflector.inflect(
+        "url_helpers" => "URLHelpers"
+      )
+
       [avo_directory, engine_avo_directory].each do |directory_path|
         ActiveSupport::Dependencies.autoload_paths.delete(directory_path)
 
